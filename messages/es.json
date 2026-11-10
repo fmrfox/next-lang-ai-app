@@ -329,7 +329,8 @@
     "cancel": "Cancelar",
     "delete": "Eliminar",
     "cardDeleted": "Tarjeta eliminada",
-    "cardDeleteFailed": "No se pudo eliminar la tarjeta"
+    "cardDeleteFailed": "No se pudo eliminar la tarjeta",
+    "close": "Cerrar"
   },
   "ExtensionPromo": {
     "badge": "Novedad · extensión de Chrome",

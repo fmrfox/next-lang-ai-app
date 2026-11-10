@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
@@ -12,8 +12,9 @@ import {
   LogIn,
   Puzzle,
   Sparkles,
+  X,
 } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { GlassIcon, GlassPanel, glassPrimaryButton } from "@/components/extension/glass-panel";
 import {
@@ -50,6 +51,21 @@ interface Props {
 export default function ExtensionConnectView({ isSignedIn, isDemo, email }: Props) {
   const t = useTranslations("Extension");
   const [status, setStatus] = useState<Status>("detecting");
+  const router = useRouter();
+
+  // The page looks like a modal, so it closes like one: ×, click outside the panel or Esc.
+  const close = useCallback(() => {
+    if (window.history.length > 1) router.back();
+    else router.push("/");
+  }, [router]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [close]);
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -144,7 +160,12 @@ export default function ExtensionConnectView({ isSignedIn, isDemo, email }: Prop
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black flex items-center justify-center p-4">
+    <div
+      className="relative min-h-screen w-full overflow-hidden bg-black flex items-center justify-center p-4"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10 pointer-events-none" />
 
@@ -155,6 +176,14 @@ export default function ExtensionConnectView({ isSignedIn, isDemo, email }: Prop
         className="relative w-full max-w-md"
       >
         <GlassPanel className="p-8">
+          <button
+            type="button"
+            onClick={close}
+            aria-label={t("close")}
+            className="absolute -right-4 -top-4 rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            <X className="h-4 w-4" />
+          </button>
           <div className="flex flex-col items-center text-center">
             <GlassIcon icon={Puzzle} />
             <h1 className="mt-5 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-200">

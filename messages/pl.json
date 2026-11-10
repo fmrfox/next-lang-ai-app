@@ -330,7 +330,8 @@
     "cancel": "Anuluj",
     "delete": "Usuń",
     "cardDeleted": "Fiszka usunięta",
-    "cardDeleteFailed": "Nie udało się usunąć fiszki"
+    "cardDeleteFailed": "Nie udało się usunąć fiszki",
+    "close": "Zamknij"
   },
   "ExtensionPromo": {
     "badge": "Nowość · rozszerzenie Chrome",

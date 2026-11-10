@@ -24,28 +24,9 @@ import {
 const STORE_URL = process.env.NEXT_PUBLIC_CHROME_EXTENSION_URL;
 const ZIP_URL = "/downloads/languito-extension.zip";
 
-const DISMISS_KEY = "extension-promo-dismissed-at";
-const SHOW_AGAIN_AFTER_MS = 30 * 24 * 60 * 60 * 1000;
 const SHOW_DELAY_MS = 1500;
 const DETECTION_TIMEOUT_MS = 1200;
 const INSTALL_STEPS = ["step1", "step2", "step3"] as const;
-
-function wasRecentlyDismissed(): boolean {
-  try {
-    const at = Number(localStorage.getItem(DISMISS_KEY));
-    return Number.isFinite(at) && Date.now() - at < SHOW_AGAIN_AFTER_MS;
-  } catch {
-    return false;
-  }
-}
-
-function rememberDismissal() {
-  try {
-    localStorage.setItem(DISMISS_KEY, String(Date.now()));
-  } catch {
-    // storage blocked — the modal will simply show again next time
-  }
-}
 
 /** Desktop only: the extension can't be installed on phones/tablets. */
 function isDesktop(): boolean {
@@ -77,8 +58,9 @@ function detectExtension(): Promise<boolean> {
 }
 
 /**
- * Announces the Languito browser extension once per visitor (again after 30 days),
- * after the cookie banner has been answered, on desktop, when the extension isn't installed.
+ * Announces the Languito browser extension on every visit until it is installed (detected via the
+ * bridge content script) — after the cookie banner has been answered, on desktop only.
+ * Closing (×, click outside, Esc) hides it for the current page load.
  */
 export function ExtensionPromoModal() {
   const t = useTranslations("ExtensionPromo");
@@ -90,7 +72,7 @@ export function ExtensionPromoModal() {
 
   useEffect(() => {
     if (!consent || onConnectPage) return;
-    if (!isDesktop() || wasRecentlyDismissed()) return;
+    if (!isDesktop()) return;
 
     let cancelled = false;
     const timer = setTimeout(async () => {
@@ -104,10 +86,7 @@ export function ExtensionPromoModal() {
     };
   }, [consent, onConnectPage]);
 
-  const close = () => {
-    rememberDismissal();
-    setOpen(false);
-  };
+  const close = () => setOpen(false);
 
   return (
     <Dialog.Root open={open} onOpenChange={(next) => (next ? setOpen(true) : close())}>
@@ -205,7 +184,6 @@ export function ExtensionPromoModal() {
                         <a
                           href={ZIP_URL}
                           download
-                          onClick={rememberDismissal}
                           className={cn(glassPrimaryButton, "inline-flex items-center justify-center")}
                         >
                           {t("download")}

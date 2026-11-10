@@ -331,7 +331,8 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "cardDeleted": "Flashcard deleted",
-    "cardDeleteFailed": "Could not delete the flashcard"
+    "cardDeleteFailed": "Could not delete the flashcard",
+    "close": "Close"
   },
   "ExtensionPromo": {
     "badge": "New · Chrome extension",

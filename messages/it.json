@@ -329,7 +329,8 @@
     "cancel": "Annulla",
     "delete": "Elimina",
     "cardDeleted": "Flashcard eliminata",
-    "cardDeleteFailed": "Impossibile eliminare la flashcard"
+    "cardDeleteFailed": "Impossibile eliminare la flashcard",
+    "close": "Chiudi"
   },
   "ExtensionPromo": {
     "badge": "Novità · estensione Chrome",
