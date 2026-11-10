@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import { isDemoMode } from "@/lib/demo-helpers";
+import { isDemoMode, isDemoUserId } from "@/lib/demo-helpers";
 import { getCreateExtensionTokenUseCase } from "@/lib/container";
 
 export async function createExtensionTokenAction(): Promise<
@@ -14,6 +14,9 @@ export async function createExtensionTokenAction(): Promise<
   const { userId, user } = await auth();
   if (!userId || !user) {
     return { success: false, error: "unauthorized" };
+  }
+  if (isDemoUserId(userId)) {
+    return { success: false, error: "demo" };
   }
 
   try {

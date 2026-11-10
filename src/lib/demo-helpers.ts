@@ -16,4 +16,14 @@ export async function isDemoMode(): Promise<boolean> {
 
 export function getDemoUserId(): string | null {
   return process.env.DEMO_USER_ID || null;
+}
+
+/**
+ * True for the shared demo account. The demo account is a real user, so it can also be reached
+ * through a normal sign-in (without the demo cookie) — features that must never write to it
+ * (e.g. the browser extension) check the user id, not only the cookie.
+ */
+export function isDemoUserId(userId: string | null | undefined): boolean {
+  const demoUserId = getDemoUserId();
+  return Boolean(demoUserId && userId && userId === demoUserId);
 } 
