@@ -5,7 +5,8 @@ import type { MouseEvent } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Volume2 } from "lucide-react";
+import { Heart, Trash2, Volume2 } from "lucide-react";
+import { useCategoryLabel } from "@/hooks/useCategoryLabel";
 import { motion } from "framer-motion";
 import { speak } from "@/utils/speak";
 import { SupportedTTSLanguage } from "@/types/locale";
@@ -29,6 +30,8 @@ interface FlashcardViewProps {
   isFavorited?: boolean;
   onToggleFavorite?: (flashcardId: number) => void;
   answerCycle?: number;
+  /** When set, shows a delete button (used for the extension category). */
+  onDelete?: (card: Flashcard) => void;
 }
 
 export function FlashcardView({
@@ -39,7 +42,9 @@ export function FlashcardView({
   isFavorited = false,
   onToggleFavorite,
   answerCycle = 0,
+  onDelete,
 }: FlashcardViewProps) {
+  const categoryLabel = useCategoryLabel();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isSavingFavorite, setIsSavingFavorite] = useState(false);
   const t = useTranslations("Difficulty");
@@ -128,6 +133,21 @@ export function FlashcardView({
                   >
                     <Heart className="h-5 w-5" fill={isFavorited ? "currentColor" : "none"} />
                   </Button>
+                  {onDelete && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute left-2 top-2 h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/50 border border-white/10 shadow-md text-gray-300 hover:text-red-400"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDelete(card);
+                      }}
+                      aria-label="Delete flashcard"
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </Button>
+                  )}
                   <div className="mb-1 md:mb-2 flex flex-col items-center">
                     <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">
                       {card.translate_text}
@@ -166,7 +186,7 @@ export function FlashcardView({
                 <div className="p-1.5 sm:p-2 flex items-center justify-between text-xs text-gray-400 bg-gray-800/30 rounded-b-xl">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-gray-800/60 text-xs">
-                      {card.category}
+                      {categoryLabel(card.category)}
                     </Badge>
                     <Badge variant="outline" className={`text-xs ${getDifficultyInfo(card.difficultyLevel).className}`}>
                       {getDifficultyInfo(card.difficultyLevel).label}
@@ -201,7 +221,7 @@ export function FlashcardView({
                 <div className="p-1.5 sm:p-2 flex items-center justify-between text-xs text-gray-400 bg-gray-800/30 rounded-b-xl">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-gray-800/60 text-xs">
-                      {card.category}
+                      {categoryLabel(card.category)}
                     </Badge>
                     <Badge variant="outline" className={`text-xs ${getDifficultyInfo(card.difficultyLevel).className}`}>
                       {getDifficultyInfo(card.difficultyLevel).label}

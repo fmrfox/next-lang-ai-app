@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "Come funziona",
-    "subtitle": "Impara qualsiasi lingua in tre semplici passi.",
+    "subtitle": "Impara qualsiasi lingua in quattro semplici passi.",
     "step1": {
       "title": "Passo 1: Scegli e Crea",
       "subtitle": "Inizia il tuo percorso linguistico in pochi secondi.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Analisi dei progressi",
       "customStudyPlans": "Piani di studio personalizzati",
       "crossDeviceSync": "Sincronizzazione tra dispositivi"
+    },
+    "step4": {
+      "title": "Passo 4: Impara mentre leggi",
+      "subtitle": "L'estensione del browser trasforma le parole di qualsiasi sito in flashcard.",
+      "select": "Seleziona una parola o un'espressione sconosciuta su qualsiasi pagina e fai clic destro.",
+      "context": "L'IA sceglie la traduzione adatta alla frase e la usa come esempio.",
+      "category": "Le flashcard finiscono nella categoria fissa «Dall'estensione» del tuo account.",
+      "install": "Installa l'estensione dalla finestra che appare sul sito e collegala al tuo account.",
+      "imageAlt": "L'estensione Languito crea una flashcard su un articolo"
     }
   },
   "Footer": {
@@ -266,8 +275,8 @@
     "advanced": "Avanzato"
   },
   "Auth": {
-    "welcomeBack": "Bentornato", 
-    "createAccount": "Crea account", 
+    "welcomeBack": "Bentornato",
+    "createAccount": "Crea account",
     "email": "Email",
     "enterEmail": "Inserisci la tua email",
     "sendMagicLink": "Invia link magico",
@@ -282,7 +291,7 @@
     "codePlaceholder": "123456",
     "verifyCode": "Verifica codice",
     "verifyingCode": "Verifica in corso...",
-    "sendAnotherLink": "Invia un altro link", 
+    "sendAnotherLink": "Invia un altro link",
     "sendAnotherCode": "Invia un altro codice",
     "didntReceiveEmail": "Non hai ricevuto l'email? Controlla la cartella spam o riprova.",
     "didntReceiveCode": "Non hai ricevuto il codice? Controlla la cartella spam o riprova.",
@@ -292,5 +301,52 @@
     "codeExpired": "Codice scaduto. Invia un nuovo codice.",
     "troubleOnMobile": "Problemi con i link magici su mobile?",
     "tryCodeInstead": "Prova ad usare un codice invece"
+  },
+  "Extension": {
+    "title": "Estensione Languito",
+    "description": "Collega l'estensione di Chrome al tuo account per creare flashcard dal testo selezionato su qualsiasi sito.",
+    "detecting": "Ricerca dell'estensione…",
+    "notDetected": "Estensione Languito non rilevata. Installala e ricarica questa pagina.",
+    "readyToConnect": "Estensione rilevata. Collegarla a {email}?",
+    "connecting": "Connessione…",
+    "connected": "Fatto! Seleziona del testo su qualsiasi pagina, fai clic destro e scegli «Crea flashcard in Languito».",
+    "connectFailed": "Impossibile collegare l'estensione. Riprova.",
+    "signInRequired": "Accedi, poi torna qui per collegare l'estensione.",
+    "demoNotSupported": "L'estensione non può essere collegata in modalità demo. Accedi al tuo account.",
+    "signIn": "Accedi",
+    "connect": "Collega estensione",
+    "tryAgain": "Riprova",
+    "goToFlashcards": "Vai alle flashcard",
+    "categoryName": "Dall'estensione",
+    "categorySubtitle": "Parole selezionate sui siti",
+    "emptyCategoryTitle": "Qui arrivano le parole dall'estensione",
+    "emptyCategoryHint": "Seleziona una parola o una frase su qualsiasi pagina, fai clic destro e scegli «Crea flashcard in Languito».",
+    "connectExtension": "Collega estensione",
+    "pinnedCategory": "Categoria fissa: non può essere eliminata",
+    "deleteCard": "Elimina flashcard",
+    "deleteCardTitle": "Eliminare la flashcard «{term}»?",
+    "deleteCardDescription": "La flashcard e i suoi progressi verranno eliminati definitivamente.",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "cardDeleted": "Flashcard eliminata",
+    "cardDeleteFailed": "Impossibile eliminare la flashcard",
+    "close": "Chiudi"
+  },
+  "ExtensionPromo": {
+    "badge": "Novità · estensione Chrome",
+    "title": "Flashcard da qualsiasi sito",
+    "description": "Seleziona una parola su qualsiasi pagina e fai clic destro. L'IA crea una flashcard con una traduzione adatta alla frase e la salva nel tuo account.",
+    "previewSentenceStart": "The committee decided to",
+    "previewTerm": "postpone",
+    "previewSentenceEnd": "the meeting.",
+    "previewTranslation": "rinviare, posticipare",
+    "step1": "Scarica ed estrai il file ZIP.",
+    "step2": "In chrome://extensions attiva la «Modalità sviluppatore» e fai clic su «Carica estensione non pacchettizzata».",
+    "step3": "Collega l'estensione al tuo account: la pagina si apre da sola.",
+    "later": "Forse più tardi",
+    "download": "Scarica",
+    "addToChrome": "Aggiungi a Chrome",
+    "browsers": "Chrome, Edge, Brave e Opera da computer.",
+    "close": "Chiudi"
   }
-} 
+}

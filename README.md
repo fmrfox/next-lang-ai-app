@@ -37,6 +37,7 @@
 - **Spaced Repetition System**: Smart algorithm optimizes review timing based on mastery level (0-5 scale)
 - **Multi-Language Support**: Learn any language with UI available in English, Spanish, Italian, and Polish
 - **Progress Tracking**: Detailed analytics with learning streaks, daily goals, and experience points
+- **Chrome Extension**: Select a word on any website → AI flashcard saved to your account
 - **Demo Mode**: Try the platform without registration
 - **Responsive Design**: Seamless experience across all devices
 
@@ -57,6 +58,25 @@
 ### Progress Tracking
 ![Progress Analytics](./public/readme/progress.png)
 *Detailed progress visualization with mastery levels and learning streaks*
+
+### Chrome Extension
+![Languito extension creating a flashcard on a news article](./public/readme/extension_in_action.png)
+*Select a word on any page and right-click → the extension creates a flashcard with a context-aware translation and saves it to the pinned “From extension” category*
+
+![Extension announcement modal](./public/readme/extension_promo_modal.png)
+*Minimal glass-style modal that introduces the extension to visitors and links to the download*
+
+## 🧩 Browser Extension
+
+Manifest V3 extension (React + TypeScript + Vite) in [`extension/`](./extension):
+
+- **Right-click → flashcard** (or `Alt+Shift+F`): the selected word or phrase plus its surrounding sentence go to the API; GPT picks the meaning that fits the context, uses the page sentence as the example and saves one card.
+- **Pinned category**: cards land in a permanent “From extension” category at the top of the dashboard (it can't be deleted; single cards can).
+- **Secure connection**: the `/extension/connect` page issues a revocable API token (only its SHA-256 hash is stored, expires after 90 days idle) — the extension never touches the Supabase session.
+- **Minimal permissions**: `activeTab` + `scripting` only on the tab where the user acts; host access only to Languito.
+- **Distribution**: `cd extension && npm run release` builds the production ZIP into `public/downloads/`. Set `NEXT_PUBLIC_CHROME_EXTENSION_URL` once it's published in the Chrome Web Store.
+
+Details: [`extension/README.md`](./extension/README.md).
 
 ## ✨ Core Features
 
@@ -107,6 +127,7 @@ next-lang-ai-app/
 │   ├── hooks/                # Custom React hooks
 │   ├── i18n/                 # Internationalization config
 │   └── lib/                  # Utility functions
+├── extension/                # Chrome extension (MV3, React + Vite)
 ├── prisma/                   # Database schema & migrations
 ├── messages/                 # Translation files (en, es, it, pl)
 └── public/                   # Static assets

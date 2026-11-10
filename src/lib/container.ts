@@ -2,6 +2,7 @@ import { PrismaFlashcardRepository } from "@/infrastructure/database/PrismaFlash
 import { PrismaFavoriteRepository } from "@/infrastructure/database/PrismaFavoriteRepository";
 import { PrismaProgressRepository } from "@/infrastructure/database/PrismaProgressRepository";
 import { PrismaUserRepository } from "@/infrastructure/database/PrismaUserRepository";
+import { PrismaExtensionTokenRepository } from "@/infrastructure/database/PrismaExtensionTokenRepository";
 import { GetUserFlashcardsUseCase } from "@/core/useCases/flashcards/GetUserFlashcards";
 import { GenerateFlashcardsUseCase } from "@/core/useCases/flashcards/GenerateFlashcards";
 import { UpdateFlashcardProgressUseCase } from "@/core/useCases/flashcards/UpdateFlashcardProgress";
@@ -15,7 +16,14 @@ import { GetReviewedTodayCountUseCase } from "@/core/useCases/progress/GetReview
 import { AddFavoriteUseCase } from "@/core/useCases/favorites/AddFavoriteUseCase";
 import { GetUserFavoritesUseCase } from "@/core/useCases/favorites/GetUserFavoritesUseCase";
 import { RemoveFavoriteUseCase } from "@/core/useCases/favorites/RemoveFavoriteUseCase";
+import {
+  CreateExtensionTokenUseCase,
+  AuthenticateExtensionTokenUseCase,
+  RevokeExtensionTokenUseCase,
+  GenerateFlashcardFromSelectionUseCase,
+} from "@/core/useCases/extension";
 import { FlashcardRepository } from "@/core/interfaces/repositories/FlashcardRepository";
+import { UserRepository } from "@/core/interfaces/repositories/UserRepository";
 import { FavoriteRepository } from "@/core/interfaces/repositories/FavoriteRepository";
 import { 
   aiFlashcardGenerationService,
@@ -52,6 +60,7 @@ class Container {
     this.services.set('FavoriteRepository', new PrismaFavoriteRepository());
     this.services.set('ProgressRepository', new PrismaProgressRepository());
     this.services.set('UserRepository', new PrismaUserRepository());
+    this.services.set('ExtensionTokenRepository', new PrismaExtensionTokenRepository());
     
     // Inicjalizacja serwisów
     this.services.set('AIFlashcardGenerationService', aiFlashcardGenerationService);
@@ -159,6 +168,34 @@ class Container {
       )
     );
     
+    // Browser extension use cases
+    this.services.set(
+      'CreateExtensionTokenUseCase',
+      new CreateExtensionTokenUseCase(
+        this.get('ExtensionTokenRepository'),
+        this.get('UserManagementService')
+      )
+    );
+
+    this.services.set(
+      'AuthenticateExtensionTokenUseCase',
+      new AuthenticateExtensionTokenUseCase(this.get('ExtensionTokenRepository'))
+    );
+
+    this.services.set(
+      'RevokeExtensionTokenUseCase',
+      new RevokeExtensionTokenUseCase(this.get('ExtensionTokenRepository'))
+    );
+
+    this.services.set(
+      'GenerateFlashcardFromSelectionUseCase',
+      new GenerateFlashcardFromSelectionUseCase(
+        this.get('FlashcardRepository'),
+        this.get('AIFlashcardGenerationService'),
+        this.get('FlashcardProgressService')
+      )
+    );
+
     // Auth use cases
     this.services.set(
       'SignInWithOtpUseCase',
@@ -266,6 +303,22 @@ export const getUserFavoritesUseCase = (): GetUserFavoritesUseCase =>
 
 export const getRemoveFavoriteUseCase = (): RemoveFavoriteUseCase =>
   container.get('RemoveFavoriteUseCase');
+
+export const getUserRepository = (): UserRepository =>
+  container.get('UserRepository');
+
+// Browser extension exports
+export const getCreateExtensionTokenUseCase = (): CreateExtensionTokenUseCase =>
+  container.get('CreateExtensionTokenUseCase');
+
+export const getAuthenticateExtensionTokenUseCase = (): AuthenticateExtensionTokenUseCase =>
+  container.get('AuthenticateExtensionTokenUseCase');
+
+export const getRevokeExtensionTokenUseCase = (): RevokeExtensionTokenUseCase =>
+  container.get('RevokeExtensionTokenUseCase');
+
+export const getGenerateFlashcardFromSelectionUseCase = (): GenerateFlashcardFromSelectionUseCase =>
+  container.get('GenerateFlashcardFromSelectionUseCase');
 
 // Auth exports
 export const getSignInWithOtpUseCase = (): SignInWithOtpUseCase =>

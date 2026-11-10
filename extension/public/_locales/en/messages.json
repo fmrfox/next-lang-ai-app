@@ -1,0 +1,134 @@
+{
+  "extName": {
+    "message": "Languito – AI flashcards"
+  },
+  "extDescription": {
+    "message": "Select a word or sentence on any page and turn it into an AI flashcard in your Languito account."
+  },
+  "menuCreate": {
+    "message": "Create flashcard in Languito: “%s”"
+  },
+  "commandCreate": {
+    "message": "Create a flashcard from the selected text"
+  },
+  "toastGenerating": {
+    "message": "Creating flashcard…"
+  },
+  "toastSaved": {
+    "message": "Saved to Languito"
+  },
+  "toastDuplicate": {
+    "message": "You already have this flashcard"
+  },
+  "toastErrorTitle": {
+    "message": "Flashcard not created"
+  },
+  "errNoSelection": {
+    "message": "Select a word or sentence first."
+  },
+  "errTooLong": {
+    "message": "The selection is too long — select up to 300 characters."
+  },
+  "errNotConnected": {
+    "message": "Connect the extension to your Languito account."
+  },
+  "errUnauthorized": {
+    "message": "Your connection expired. Connect the extension again."
+  },
+  "errInvalidInput": {
+    "message": "This text can't be turned into a flashcard."
+  },
+  "errSameLanguages": {
+    "message": "The learned language and translation language must differ."
+  },
+  "errRateLimited": {
+    "message": "Too many flashcards in a short time. Try again in a minute."
+  },
+  "errGenerationFailed": {
+    "message": "The AI couldn't generate a flashcard. Try again."
+  },
+  "errServer": {
+    "message": "Languito server error. Try again later."
+  },
+  "errNetwork": {
+    "message": "Can't reach Languito. Check your connection."
+  },
+  "actionConnect": {
+    "message": "Connect"
+  },
+  "actionOpenLanguito": {
+    "message": "Open Languito"
+  },
+  "popupConnectedAs": {
+    "message": "Connected as $EMAIL$",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "anna@example.com"
+      }
+    }
+  },
+  "popupConnected": {
+    "message": "Connected"
+  },
+  "popupNotConnectedTitle": {
+    "message": "Connect your account"
+  },
+  "popupNotConnectedBody": {
+    "message": "Sign in to Languito and connect the extension to save flashcards to your account."
+  },
+  "popupConnect": {
+    "message": "Connect with Languito"
+  },
+  "popupDisconnect": {
+    "message": "Disconnect"
+  },
+  "popupLearning": {
+    "message": "I'm learning"
+  },
+  "popupTranslateTo": {
+    "message": "Translate to"
+  },
+  "popupLevel": {
+    "message": "Level"
+  },
+  "levelEasy": {
+    "message": "Easy (A1–B1)"
+  },
+  "levelAdvanced": {
+    "message": "Advanced (B2+)"
+  },
+  "popupRecent": {
+    "message": "Words from pages"
+  },
+  "popupRecentEmpty": {
+    "message": "Select text on any page, right-click and choose “Create flashcard in Languito”."
+  },
+  "popupShortcut": {
+    "message": "Shortcut: $KEYS$",
+    "placeholders": {
+      "keys": {
+        "content": "$1",
+        "example": "Alt+Shift+F"
+      }
+    }
+  },
+  "popupOpenApp": {
+    "message": "Open Languito"
+  },
+  "langEn": {
+    "message": "English"
+  },
+  "langPl": {
+    "message": "Polish"
+  },
+  "langEs": {
+    "message": "Spanish"
+  },
+  "langIt": {
+    "message": "Italian"
+  },
+  "popupShowAll": {
+    "message": "Show all"
+  }
+}

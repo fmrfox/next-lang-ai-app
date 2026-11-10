@@ -241,7 +241,7 @@ export default function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32"
         >
           <div className="text-left">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
@@ -284,6 +284,44 @@ export default function HowItWorks() {
                 className="rounded-lg"
               />
             </div>
+          </div>
+        </motion.div>
+
+        {/* Step 4 — browser extension */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-16"
+        >
+          <div className="flex items-center justify-center order-2 md:order-1">
+            <div className="group inline-block rounded-xl border border-purple-600/40 shadow-lg shadow-purple-900/20 bg-black/40 p-[3px] group-hover:border-purple-500/70 group-hover:shadow-purple-700/30 transition-all duration-300">
+              <ImageModal
+                src="/extension.png"
+                alt={t('step4.imageAlt')}
+                className="rounded-lg"
+              />
+            </div>
+          </div>
+
+          <div className="text-left order-1 md:order-2">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">
+                {t('step4.title')}
+              </span>
+            </h3>
+            <p className="text-gray-300 text-lg mb-6">
+              {t('step4.subtitle')}
+            </p>
+            <ul className="space-y-3 text-gray-400">
+              {(['select', 'context', 'category', 'install'] as const).map((key) => (
+                <li key={key} className="flex items-start">
+                  <span className="text-purple-400 mr-2 text-xl">•</span>
+                  <span>{t(`step4.${key}`)}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </motion.div>
       </div>

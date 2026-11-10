@@ -83,7 +83,7 @@
   },
   "HowItWorks": {
     "title": "Jak to działa",
-    "subtitle": "Naucz się każdego języka w trzech prostych krokach.",
+    "subtitle": "Naucz się każdego języka w czterech prostych krokach.",
     "step1": {
       "title": "Krok 1: Wybierz i Utwórz",
       "subtitle": "Rozpocznij naukę języka w kilka sekund.",
@@ -121,6 +121,15 @@
       "progressAnalytics": "Analityka postępów",
       "customStudyPlans": "Spersonalizowane plany nauki",
       "crossDeviceSync": "Synchronizacja między urządzeniami"
+    },
+    "step4": {
+      "title": "Krok 4: Ucz się podczas czytania",
+      "subtitle": "Rozszerzenie do przeglądarki zamienia słowa z dowolnej strony w fiszki.",
+      "select": "Zaznacz nieznane słowo lub zwrot na dowolnej stronie i kliknij prawym przyciskiem.",
+      "context": "AI dobiera tłumaczenie do kontekstu zdania i używa go jako przykładu.",
+      "category": "Fiszki trafiają do przypiętej kategorii „Z rozszerzenia” na Twoim koncie.",
+      "install": "Zainstaluj rozszerzenie z okna, które pojawi się na stronie, i połącz je z kontem.",
+      "imageAlt": "Rozszerzenie Languito tworzy fiszkę na stronie z artykułem"
     }
   },
   "Footer": {
@@ -268,7 +277,7 @@
   "home": "Strona główna",
   "Auth": {
     "welcomeBack": "Witamy ponownie",
-    "createAccount": "Utwórz konto", 
+    "createAccount": "Utwórz konto",
     "email": "Email",
     "enterEmail": "Wprowadź swój email",
     "sendMagicLink": "Wyślij Magic Link",
@@ -283,7 +292,7 @@
     "codePlaceholder": "123456",
     "verifyCode": "Weryfikuj kod",
     "verifyingCode": "Weryfikacja...",
-    "sendAnotherLink": "Wyślij kolejny link", 
+    "sendAnotherLink": "Wyślij kolejny link",
     "sendAnotherCode": "Wyślij kolejny kod",
     "didntReceiveEmail": "Nie otrzymałeś emaila? Sprawdź folder spam lub spróbuj ponownie.",
     "didntReceiveCode": "Nie otrzymałeś kodu? Sprawdź folder spam lub spróbuj ponownie.",
@@ -293,5 +302,52 @@
     "codeExpired": "Kod wygasł. Wyślij nowy kod.",
     "troubleOnMobile": "Problemy z magic linkami na telefonie?",
     "tryCodeInstead": "Spróbuj kodu zamiast tego"
+  },
+  "Extension": {
+    "title": "Rozszerzenie Languito",
+    "description": "Połącz rozszerzenie Chrome ze swoim kontem, aby tworzyć fiszki z zaznaczonego tekstu na dowolnej stronie.",
+    "detecting": "Szukam rozszerzenia…",
+    "notDetected": "Nie wykryto rozszerzenia Languito. Zainstaluj je i odśwież tę stronę.",
+    "readyToConnect": "Rozszerzenie wykryte. Połączyć je z kontem {email}?",
+    "connecting": "Łączenie…",
+    "connected": "Gotowe! Zaznacz tekst na dowolnej stronie, kliknij prawym przyciskiem i wybierz „Utwórz fiszkę w Languito”.",
+    "connectFailed": "Nie udało się połączyć rozszerzenia. Spróbuj ponownie.",
+    "signInRequired": "Zaloguj się, a potem wróć tutaj, aby połączyć rozszerzenie.",
+    "demoNotSupported": "Rozszerzenia nie można połączyć w trybie demo. Zaloguj się na swoje konto.",
+    "signIn": "Zaloguj się",
+    "connect": "Połącz rozszerzenie",
+    "tryAgain": "Spróbuj ponownie",
+    "goToFlashcards": "Przejdź do fiszek",
+    "categoryName": "Z rozszerzenia",
+    "categorySubtitle": "Słowa zaznaczone na stronach",
+    "emptyCategoryTitle": "Tu trafią słowa z rozszerzenia",
+    "emptyCategoryHint": "Zaznacz słowo lub zdanie na dowolnej stronie, kliknij prawym przyciskiem i wybierz „Utwórz fiszkę w Languito”.",
+    "connectExtension": "Połącz rozszerzenie",
+    "pinnedCategory": "Kategoria stała — nie można jej usunąć",
+    "deleteCard": "Usuń fiszkę",
+    "deleteCardTitle": "Usunąć fiszkę „{term}”?",
+    "deleteCardDescription": "Fiszka i jej postęp nauki zostaną trwale usunięte.",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "cardDeleted": "Fiszka usunięta",
+    "cardDeleteFailed": "Nie udało się usunąć fiszki",
+    "close": "Zamknij"
+  },
+  "ExtensionPromo": {
+    "badge": "Nowość · rozszerzenie Chrome",
+    "title": "Fiszki z każdej strony",
+    "description": "Zaznacz słowo na dowolnej stronie i kliknij prawym przyciskiem. AI utworzy fiszkę z tłumaczeniem dopasowanym do zdania i zapisze ją na Twoim koncie.",
+    "previewSentenceStart": "The committee decided to",
+    "previewTerm": "postpone",
+    "previewSentenceEnd": "the meeting.",
+    "previewTranslation": "przełożyć, odłożyć",
+    "step1": "Pobierz i rozpakuj plik ZIP.",
+    "step2": "W chrome://extensions włącz „Tryb dewelopera” i kliknij „Załaduj rozpakowane”.",
+    "step3": "Połącz rozszerzenie z kontem — strona otworzy się sama.",
+    "later": "Może później",
+    "download": "Pobierz",
+    "addToChrome": "Dodaj do Chrome",
+    "browsers": "Chrome, Edge, Brave i Opera na komputerze.",
+    "close": "Zamknij"
   }
-} 
+}

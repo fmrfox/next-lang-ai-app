@@ -317,7 +317,7 @@ export default function GuestFlashcardsView({
         <div
           className={`
           fixed inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-in-out
-          md:relative md:transform-none
+          md:relative md:inset-auto md:h-full md:transform-none
           ${
             isSidebarCollapsed
               ? "-translate-x-full md:translate-x-0"

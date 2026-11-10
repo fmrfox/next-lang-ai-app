@@ -43,7 +43,14 @@ export function MultipleChoiceAnswers({
     const answerField = isFlipped ? "translate_text" : "origin_text";
     const currentCategory = card.category;
 
-    const sameCategory = otherFlashcards.filter(
+    // Distractors must be in the same languages (the extension category may mix language pairs).
+    const sameLanguagePair = otherFlashcards.filter(
+      (otherCard) =>
+        otherCard.sourceLanguage === card.sourceLanguage &&
+        otherCard.targetLanguage === card.targetLanguage
+    );
+
+    const sameCategory = sameLanguagePair.filter(
       (otherCard) => otherCard.category === currentCategory
     );
 
@@ -55,7 +62,7 @@ export function MultipleChoiceAnswers({
     const wrongAnswers = wrongAnswersPool.slice(0, 3);
 
     if (wrongAnswers.length < 3) {
-      const otherCategoriesAnswers = otherFlashcards
+      const otherCategoriesAnswers = sameLanguagePair
         .filter((otherCard) => otherCard.category !== currentCategory)
         .filter((otherCard) => otherCard[answerField] !== correctAnswer)
         .map((otherCard) => otherCard[answerField])

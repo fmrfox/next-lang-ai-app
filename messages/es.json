@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "Cómo funciona",
-    "subtitle": "Aprende cualquier idioma en tres sencillos pasos.",
+    "subtitle": "Aprende cualquier idioma en cuatro sencillos pasos.",
     "step1": {
       "title": "Paso 1: Elige y Crea",
       "subtitle": "Comienza tu viaje lingüístico en segundos.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Análisis de progreso",
       "customStudyPlans": "Planes de estudio personalizados",
       "crossDeviceSync": "Sincronización multidispositivo"
+    },
+    "step4": {
+      "title": "Paso 4: Aprende mientras lees",
+      "subtitle": "La extensión del navegador convierte palabras de cualquier web en tarjetas.",
+      "select": "Selecciona una palabra o expresión desconocida en cualquier página y haz clic derecho.",
+      "context": "La IA elige la traducción que encaja en la frase y la usa como ejemplo.",
+      "category": "Las tarjetas van a la categoría fija «Desde la extensión» de tu cuenta.",
+      "install": "Instala la extensión desde la ventana que aparece en la web y conéctala a tu cuenta.",
+      "imageAlt": "La extensión de Languito creando una tarjeta en un artículo"
     }
   },
   "Footer": {
@@ -267,7 +276,7 @@
   "home": "Inicio",
   "Auth": {
     "welcomeBack": "Bienvenido de vuelta",
-    "createAccount": "Crear cuenta", 
+    "createAccount": "Crear cuenta",
     "email": "Email",
     "enterEmail": "Ingresa tu email",
     "sendMagicLink": "Enviar enlace mágico",
@@ -282,7 +291,7 @@
     "codePlaceholder": "123456",
     "verifyCode": "Verificar código",
     "verifyingCode": "Verificando...",
-    "sendAnotherLink": "Enviar otro enlace", 
+    "sendAnotherLink": "Enviar otro enlace",
     "sendAnotherCode": "Enviar otro código",
     "didntReceiveEmail": "¿No recibiste el email? Revisa tu carpeta de spam o intenta de nuevo.",
     "didntReceiveCode": "¿No recibiste el código? Revisa tu carpeta de spam o intenta de nuevo.",
@@ -292,5 +301,52 @@
     "codeExpired": "Código expirado. Envía un nuevo código.",
     "troubleOnMobile": "¿Problemas con enlaces mágicos en móvil?",
     "tryCodeInstead": "Prueba usar un código en su lugar"
+  },
+  "Extension": {
+    "title": "Extensión de Languito",
+    "description": "Conecta la extensión de Chrome a tu cuenta para crear tarjetas a partir del texto que selecciones en cualquier web.",
+    "detecting": "Buscando la extensión…",
+    "notDetected": "No se ha detectado la extensión de Languito. Instálala y recarga esta página.",
+    "readyToConnect": "Extensión detectada. ¿Conectarla a {email}?",
+    "connecting": "Conectando…",
+    "connected": "¡Listo! Selecciona texto en cualquier página, haz clic derecho y elige «Crear tarjeta en Languito».",
+    "connectFailed": "No se pudo conectar la extensión. Inténtalo de nuevo.",
+    "signInRequired": "Inicia sesión y vuelve aquí para conectar la extensión.",
+    "demoNotSupported": "La extensión no se puede conectar en modo demo. Inicia sesión en tu cuenta.",
+    "signIn": "Iniciar sesión",
+    "connect": "Conectar extensión",
+    "tryAgain": "Intentar de nuevo",
+    "goToFlashcards": "Ir a las tarjetas",
+    "categoryName": "Desde la extensión",
+    "categorySubtitle": "Palabras seleccionadas en webs",
+    "emptyCategoryTitle": "Aquí llegan las palabras de la extensión",
+    "emptyCategoryHint": "Selecciona una palabra o frase en cualquier página, haz clic derecho y elige «Crear tarjeta en Languito».",
+    "connectExtension": "Conectar extensión",
+    "pinnedCategory": "Categoría fija: no se puede eliminar",
+    "deleteCard": "Eliminar tarjeta",
+    "deleteCardTitle": "¿Eliminar la tarjeta «{term}»?",
+    "deleteCardDescription": "La tarjeta y su progreso se eliminarán de forma permanente.",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "cardDeleted": "Tarjeta eliminada",
+    "cardDeleteFailed": "No se pudo eliminar la tarjeta",
+    "close": "Cerrar"
+  },
+  "ExtensionPromo": {
+    "badge": "Novedad · extensión de Chrome",
+    "title": "Tarjetas desde cualquier web",
+    "description": "Selecciona una palabra en cualquier página y haz clic derecho. La IA crea una tarjeta con una traducción adaptada a la frase y la guarda en tu cuenta.",
+    "previewSentenceStart": "The committee decided to",
+    "previewTerm": "postpone",
+    "previewSentenceEnd": "the meeting.",
+    "previewTranslation": "posponer, aplazar",
+    "step1": "Descarga y descomprime el archivo ZIP.",
+    "step2": "En chrome://extensions activa el «Modo de desarrollador» y pulsa «Cargar descomprimida».",
+    "step3": "Conecta la extensión a tu cuenta: la página se abre sola.",
+    "later": "Quizás más tarde",
+    "download": "Descargar",
+    "addToChrome": "Añadir a Chrome",
+    "browsers": "Chrome, Edge, Brave y Opera en ordenador.",
+    "close": "Cerrar"
   }
-} 
+}

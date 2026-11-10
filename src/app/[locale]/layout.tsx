@@ -8,6 +8,7 @@ import { LoadingErrorProvider } from "@/shared/ui/loading-error-provider";
 import { ErrorBoundary } from "@/shared/ui/error-boundary";
 import Footer from "@/components/footer";
 import { CookieConsentProvider } from "@/components/cookie-consent";
+import { ExtensionPromoModal } from "@/components/extension/extension-promo-modal";
 import { ContactModalProvider } from "@/shared/contact-modal-context";
 import ClientI18nProvider from '@/components/client-i18n-provider';
 import { AnimatedAssistant } from '@/components/animated-assistant';
@@ -92,6 +93,7 @@ export default async function LocaleLayout({
                   {children}
                   <Footer />
                   <AnimatedAssistant />
+                  <ExtensionPromoModal />
                 </ContactModalProvider>
               </CookieConsentProvider>
             </ClientI18nProvider>

@@ -1,0 +1,134 @@
+{
+  "extName": {
+    "message": "Languito – fiszki AI"
+  },
+  "extDescription": {
+    "message": "Zaznacz słowo lub zdanie na dowolnej stronie i zamień je w fiszkę AI na swoim koncie Languito."
+  },
+  "menuCreate": {
+    "message": "Utwórz fiszkę w Languito: „%s”"
+  },
+  "commandCreate": {
+    "message": "Utwórz fiszkę z zaznaczonego tekstu"
+  },
+  "toastGenerating": {
+    "message": "Tworzę fiszkę…"
+  },
+  "toastSaved": {
+    "message": "Zapisano w Languito"
+  },
+  "toastDuplicate": {
+    "message": "Masz już tę fiszkę"
+  },
+  "toastErrorTitle": {
+    "message": "Nie utworzono fiszki"
+  },
+  "errNoSelection": {
+    "message": "Najpierw zaznacz słowo lub zdanie."
+  },
+  "errTooLong": {
+    "message": "Zaznaczenie jest za długie — maksymalnie 300 znaków."
+  },
+  "errNotConnected": {
+    "message": "Połącz rozszerzenie z kontem Languito."
+  },
+  "errUnauthorized": {
+    "message": "Połączenie wygasło. Połącz rozszerzenie ponownie."
+  },
+  "errInvalidInput": {
+    "message": "Z tego tekstu nie da się utworzyć fiszki."
+  },
+  "errSameLanguages": {
+    "message": "Język nauki i język tłumaczenia muszą się różnić."
+  },
+  "errRateLimited": {
+    "message": "Za dużo fiszek w krótkim czasie. Spróbuj za minutę."
+  },
+  "errGenerationFailed": {
+    "message": "AI nie wygenerowało fiszki. Spróbuj ponownie."
+  },
+  "errServer": {
+    "message": "Błąd serwera Languito. Spróbuj później."
+  },
+  "errNetwork": {
+    "message": "Brak połączenia z Languito. Sprawdź internet."
+  },
+  "actionConnect": {
+    "message": "Połącz"
+  },
+  "actionOpenLanguito": {
+    "message": "Otwórz Languito"
+  },
+  "popupConnectedAs": {
+    "message": "Połączono jako $EMAIL$",
+    "placeholders": {
+      "email": {
+        "content": "$1",
+        "example": "anna@example.com"
+      }
+    }
+  },
+  "popupConnected": {
+    "message": "Połączono"
+  },
+  "popupNotConnectedTitle": {
+    "message": "Połącz swoje konto"
+  },
+  "popupNotConnectedBody": {
+    "message": "Zaloguj się w Languito i połącz rozszerzenie, aby zapisywać fiszki na swoim koncie."
+  },
+  "popupConnect": {
+    "message": "Połącz z Languito"
+  },
+  "popupDisconnect": {
+    "message": "Odłącz"
+  },
+  "popupLearning": {
+    "message": "Uczę się"
+  },
+  "popupTranslateTo": {
+    "message": "Tłumacz na"
+  },
+  "popupLevel": {
+    "message": "Poziom"
+  },
+  "levelEasy": {
+    "message": "Łatwy (A1–B1)"
+  },
+  "levelAdvanced": {
+    "message": "Zaawansowany (B2+)"
+  },
+  "popupRecent": {
+    "message": "Słowa ze stron"
+  },
+  "popupRecentEmpty": {
+    "message": "Zaznacz tekst na dowolnej stronie, kliknij prawym przyciskiem i wybierz „Utwórz fiszkę w Languito”."
+  },
+  "popupShortcut": {
+    "message": "Skrót: $KEYS$",
+    "placeholders": {
+      "keys": {
+        "content": "$1",
+        "example": "Alt+Shift+F"
+      }
+    }
+  },
+  "popupOpenApp": {
+    "message": "Otwórz Languito"
+  },
+  "langEn": {
+    "message": "angielski"
+  },
+  "langPl": {
+    "message": "polski"
+  },
+  "langEs": {
+    "message": "hiszpański"
+  },
+  "langIt": {
+    "message": "włoski"
+  },
+  "popupShowAll": {
+    "message": "Pokaż wszystkie"
+  }
+}

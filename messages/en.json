@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "How It Works",
-    "subtitle": "Learn any language in three simple steps.",
+    "subtitle": "Learn any language in four simple steps.",
     "step1": {
       "title": "Step 1: Choose & Create",
       "subtitle": "Start your language journey in seconds.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Progress analytics",
       "customStudyPlans": "Custom study plans",
       "crossDeviceSync": "Cross-device sync"
+    },
+    "step4": {
+      "title": "Step 4: Learn while you read",
+      "subtitle": "The browser extension turns words from any website into flashcards.",
+      "select": "Select an unknown word or phrase on any page and right-click it.",
+      "context": "AI picks the translation that fits the sentence and uses it as the example.",
+      "category": "Flashcards land in the pinned “From extension” category in your account.",
+      "install": "Install the extension from the window shown on the site and connect it to your account.",
+      "imageAlt": "Languito extension creating a flashcard on an article page"
     }
   },
   "Footer": {
@@ -269,7 +278,7 @@
   },
   "Auth": {
     "welcomeBack": "Welcome Back",
-    "createAccount": "Create Account", 
+    "createAccount": "Create Account",
     "email": "Email",
     "enterEmail": "Enter your email",
     "sendMagicLink": "Send Magic Link",
@@ -284,7 +293,7 @@
     "codePlaceholder": "123456",
     "verifyCode": "Verify Code",
     "verifyingCode": "Verifying...",
-    "sendAnotherLink": "Send Another Link", 
+    "sendAnotherLink": "Send Another Link",
     "sendAnotherCode": "Send Another Code",
     "didntReceiveEmail": "Didn't receive the email? Check your spam folder or try again.",
     "didntReceiveCode": "Didn't receive the code? Check your spam folder or try again.",
@@ -294,5 +303,52 @@
     "codeExpired": "Code expired. Send a new code.",
     "troubleOnMobile": "Having trouble with magic links on mobile?",
     "tryCodeInstead": "Try using a code instead"
+  },
+  "Extension": {
+    "title": "Languito extension",
+    "description": "Connect the Chrome extension to your account to create flashcards from text you select on any website.",
+    "detecting": "Looking for the extension…",
+    "notDetected": "The Languito extension was not detected. Install it and reload this page.",
+    "readyToConnect": "Extension detected. Connect it to {email}?",
+    "connecting": "Connecting…",
+    "connected": "All set! Select text on any page, right-click and choose “Create flashcard in Languito”.",
+    "connectFailed": "Could not connect the extension. Please try again.",
+    "signInRequired": "Sign in, then come back here to connect the extension.",
+    "demoNotSupported": "The extension can't be connected in demo mode. Please sign in to your account.",
+    "signIn": "Sign in",
+    "connect": "Connect extension",
+    "tryAgain": "Try again",
+    "goToFlashcards": "Go to flashcards",
+    "categoryName": "From extension",
+    "categorySubtitle": "Words selected on websites",
+    "emptyCategoryTitle": "Words from the extension land here",
+    "emptyCategoryHint": "Select a word or sentence on any page, right-click and choose “Create flashcard in Languito”.",
+    "connectExtension": "Connect extension",
+    "pinnedCategory": "Permanent category — can't be deleted",
+    "deleteCard": "Delete flashcard",
+    "deleteCardTitle": "Delete flashcard “{term}”?",
+    "deleteCardDescription": "The flashcard and its learning progress will be permanently deleted.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "cardDeleted": "Flashcard deleted",
+    "cardDeleteFailed": "Could not delete the flashcard",
+    "close": "Close"
+  },
+  "ExtensionPromo": {
+    "badge": "New · Chrome extension",
+    "title": "Flashcards from any website",
+    "description": "Select a word on any page and right-click. AI creates a flashcard with a translation that fits the sentence and saves it to your account.",
+    "previewSentenceStart": "The committee decided to",
+    "previewTerm": "postpone",
+    "previewSentenceEnd": "the meeting.",
+    "previewTranslation": "to delay, put off",
+    "step1": "Download and unzip the ZIP file.",
+    "step2": "In chrome://extensions turn on “Developer mode” and click “Load unpacked”.",
+    "step3": "Connect the extension to your account — the page opens automatically.",
+    "later": "Maybe later",
+    "download": "Download",
+    "addToChrome": "Add to Chrome",
+    "browsers": "Chrome, Edge, Brave and Opera on desktop.",
+    "close": "Close"
   }
-} 
+}

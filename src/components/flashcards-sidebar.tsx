@@ -14,7 +14,9 @@ import {
   ListFilter,
   Save,
   LogOut,
+  Pin,
 } from "lucide-react";
+import { EXTENSION_CATEGORY, isExtensionCategory } from "@/lib/extension-category";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
@@ -199,8 +201,17 @@ export function FlashcardsSidebar({
 
   // Memoized categories
   const categories = useMemo(() => 
-    [...new Set(filteredFlashcards.map((card) => card.category))],
+    [...new Set(filteredFlashcards.map((card) => card.category))].filter(
+      (category) => !isExtensionCategory(category)
+    ),
     [filteredFlashcards]
+  );
+
+  // The extension category is permanent and pinned on top (signed-in users only).
+  const showExtensionCategory = variant !== "guest";
+  const extensionCardCount = useMemo(
+    () => flashcards.filter((card) => isExtensionCategory(card.category)).length,
+    [flashcards]
   );
 
 
@@ -520,7 +531,7 @@ export function FlashcardsSidebar({
   }, [categoryInfoMap]);
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-full overflow-hidden">
       {isGenerating && <AIGenerationLoader />}
 
       <motion.div
@@ -745,7 +756,19 @@ export function FlashcardsSidebar({
           </div>
         )}
 
-        <ScrollArea className="flex-1">
+        {/* Pinned outside the scroll area so it is always visible. */}
+        {showExtensionCategory && (
+          <div className="px-2 pt-2 flex-shrink-0">
+            <ExtensionCategoryRow
+              isSelected={isExtensionCategory(selectedCategory)}
+              isCollapsed={isCollapsed}
+              count={extensionCardCount}
+              onSelect={() => onSelectCategory(EXTENSION_CATEGORY)}
+            />
+          </div>
+        )}
+
+        <ScrollArea className="flex-1 min-h-0">
           <div className="p-2 space-y-1">
             {displayedCategories.length > 0 ? (
               displayedCategories.map((category) => (
@@ -824,9 +847,11 @@ export function FlashcardsSidebar({
                 </div>
               ))
             ) : (
-              <p className="text-gray-400 text-center py-4">
-                {emptyStateMessage}
-              </p>
+              !showExtensionCategory && (
+                <p className="text-gray-400 text-center py-4">
+                  {emptyStateMessage}
+                </p>
+              )
             )}
           </div>
         </ScrollArea>
@@ -869,6 +894,57 @@ export function FlashcardsSidebar({
         categoryName={categoryToGenerate}
         isGenerating={isGenerating}
       />
+    </div>
+  );
+}
+
+function ExtensionCategoryRow({
+  isSelected,
+  isCollapsed,
+  count,
+  onSelect,
+}: {
+  isSelected: boolean;
+  isCollapsed: boolean;
+  count: number;
+  onSelect: () => void;
+}) {
+  const t = useTranslations("Extension");
+
+  return (
+    <div className="pb-2 mb-2 border-b border-white/10">
+      <Button
+        variant="ghost"
+        onClick={onSelect}
+        title={t("pinnedCategory")}
+        className={cn(
+          "w-full h-auto py-2 justify-start relative overflow-hidden border transition-all duration-300",
+          isCollapsed ? "px-0 justify-center" : "px-3",
+          isSelected
+            ? "bg-gradient-to-r from-amber-500/30 to-orange-500/20 border-amber-400/70 text-white hover:from-amber-500/40"
+            : "bg-gradient-to-r from-amber-500/15 to-orange-500/5 border-amber-500/30 text-amber-100 hover:from-amber-500/25 hover:text-white"
+        )}
+      >
+        <div className="flex items-center gap-3 min-w-0 w-full">
+          <Pin className="h-4 w-4 text-amber-400 flex-shrink-0 rotate-45" />
+          {!isCollapsed && (
+            <>
+              <div className="flex flex-col min-w-0 flex-1 text-left">
+                <span className="text-sm font-semibold truncate">{t("categoryName")}</span>
+                <span className="text-xs text-amber-200/60 truncate font-normal">
+                  {t("categorySubtitle")}
+                </span>
+              </div>
+              <span className="ml-2 px-1.5 py-0.5 text-xs font-medium bg-amber-500/20 text-amber-200 rounded flex-shrink-0">
+                {count}
+              </span>
+            </>
+          )}
+        </div>
+        {isSelected && (
+          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-400 to-orange-500" />
+        )}
+      </Button>
     </div>
   );
 }
