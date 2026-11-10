@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { authenticateExtensionRequest, extensionError } from "@/lib/extension-auth";
+import {
+  authenticateExtensionRequest,
+  extensionError,
+  extensionPreflight,
+  withCors,
+} from "@/lib/extension-auth";
 import { getGenerateFlashcardFromSelectionUseCase } from "@/lib/container";
 import { SUPPORTED_LANGUAGES } from "@/lib/extension-prompts";
 import { MAX_CONTEXT_LENGTH, MAX_SELECTION_LENGTH } from "@/core/useCases/extension";
@@ -18,7 +23,7 @@ const BodySchema = z.object({
 });
 
 /** Creates a single flashcard from text selected on a web page (pinned extension category). */
-export async function POST(req: Request) {
+async function handle(req: Request) {
   try {
     const session = await authenticateExtensionRequest(req);
     if (!session) return extensionError("unauthorized", "Invalid or revoked extension token");
@@ -42,3 +47,9 @@ export async function POST(req: Request) {
     return extensionError("server_error", "Unexpected error");
   }
 }
+
+export async function POST(req: Request) {
+  return withCors(req, await handle(req));
+}
+
+export const OPTIONS = extensionPreflight;

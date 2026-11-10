@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "How It Works",
-    "subtitle": "Learn any language in three simple steps.",
+    "subtitle": "Learn any language in four simple steps.",
     "step1": {
       "title": "Step 1: Choose & Create",
       "subtitle": "Start your language journey in seconds.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Progress analytics",
       "customStudyPlans": "Custom study plans",
       "crossDeviceSync": "Cross-device sync"
+    },
+    "step4": {
+      "title": "Step 4: Learn while you read",
+      "subtitle": "The browser extension turns words from any website into flashcards.",
+      "select": "Select an unknown word or phrase on any page and right-click it.",
+      "context": "AI picks the translation that fits the sentence and uses it as the example.",
+      "category": "Flashcards land in the pinned “From extension” category in your account.",
+      "install": "Install the extension from the window shown on the site and connect it to your account.",
+      "imageAlt": "Languito extension creating a flashcard on an article page"
     }
   },
   "Footer": {
@@ -326,27 +335,19 @@
   },
   "ExtensionPromo": {
     "badge": "New · Chrome extension",
-    "title": "Learn words from any website",
-    "description": "Reading an article and stuck on a word? Select it, right-click — AI creates a flashcard with a translation that fits the context and saves it straight to your Languito account.",
+    "title": "Flashcards from any website",
+    "description": "Select a word on any page and right-click. AI creates a flashcard with a translation that fits the sentence and saves it to your account.",
     "previewSentenceStart": "The committee decided to",
     "previewTerm": "postpone",
     "previewSentenceEnd": "the meeting.",
     "previewTranslation": "to delay, put off",
-    "feature1Title": "Right-click → flashcard",
-    "feature1Text": "Select a word or phrase and choose “Create flashcard in Languito” (or press Alt+Shift+F).",
-    "feature2Title": "Context-aware translation",
-    "feature2Text": "AI reads the whole sentence, picks the right meaning and uses it as the example.",
-    "feature3Title": "Its own category",
-    "feature3Text": "Words land in the pinned “From extension” category, ready to learn.",
-    "howToInstall": "How to install?",
     "step1": "Download and unzip the ZIP file.",
-    "step2": "Open chrome://extensions and turn on “Developer mode” (top right).",
-    "step3": "Click “Load unpacked” and select the unzipped folder.",
-    "step4": "Sign in to Languito and connect the extension on the page that opens automatically.",
+    "step2": "In chrome://extensions turn on “Developer mode” and click “Load unpacked”.",
+    "step3": "Connect the extension to your account — the page opens automatically.",
     "later": "Maybe later",
-    "download": "Download extension",
+    "download": "Download",
     "addToChrome": "Add to Chrome",
-    "browsers": "Works in Chrome, Edge, Brave and Opera on desktop.",
+    "browsers": "Chrome, Edge, Brave and Opera on desktop.",
     "close": "Close"
   }
 }

@@ -83,7 +83,7 @@
   },
   "HowItWorks": {
     "title": "Jak to działa",
-    "subtitle": "Naucz się każdego języka w trzech prostych krokach.",
+    "subtitle": "Naucz się każdego języka w czterech prostych krokach.",
     "step1": {
       "title": "Krok 1: Wybierz i Utwórz",
       "subtitle": "Rozpocznij naukę języka w kilka sekund.",
@@ -121,6 +121,15 @@
       "progressAnalytics": "Analityka postępów",
       "customStudyPlans": "Spersonalizowane plany nauki",
       "crossDeviceSync": "Synchronizacja między urządzeniami"
+    },
+    "step4": {
+      "title": "Krok 4: Ucz się podczas czytania",
+      "subtitle": "Rozszerzenie do przeglądarki zamienia słowa z dowolnej strony w fiszki.",
+      "select": "Zaznacz nieznane słowo lub zwrot na dowolnej stronie i kliknij prawym przyciskiem.",
+      "context": "AI dobiera tłumaczenie do kontekstu zdania i używa go jako przykładu.",
+      "category": "Fiszki trafiają do przypiętej kategorii „Z rozszerzenia” na Twoim koncie.",
+      "install": "Zainstaluj rozszerzenie z okna, które pojawi się na stronie, i połącz je z kontem.",
+      "imageAlt": "Rozszerzenie Languito tworzy fiszkę na stronie z artykułem"
     }
   },
   "Footer": {
@@ -325,27 +334,19 @@
   },
   "ExtensionPromo": {
     "badge": "Nowość · rozszerzenie Chrome",
-    "title": "Ucz się słówek z każdej strony",
-    "description": "Czytasz artykuł po angielsku i trafiasz na nieznane słowo? Zaznacz je, kliknij prawym przyciskiem — AI stworzy fiszkę z tłumaczeniem dopasowanym do kontekstu i od razu zapisze ją na Twoim koncie Languito.",
+    "title": "Fiszki z każdej strony",
+    "description": "Zaznacz słowo na dowolnej stronie i kliknij prawym przyciskiem. AI utworzy fiszkę z tłumaczeniem dopasowanym do zdania i zapisze ją na Twoim koncie.",
     "previewSentenceStart": "The committee decided to",
     "previewTerm": "postpone",
     "previewSentenceEnd": "the meeting.",
     "previewTranslation": "przełożyć, odłożyć",
-    "feature1Title": "Prawy przycisk → fiszka",
-    "feature1Text": "Zaznacz słowo lub zwrot i wybierz „Utwórz fiszkę w Languito” (albo Alt+Shift+F).",
-    "feature2Title": "Tłumaczenie z kontekstu",
-    "feature2Text": "AI czyta całe zdanie, dobiera właściwe znaczenie i używa go jako przykładu.",
-    "feature3Title": "Własna kategoria",
-    "feature3Text": "Słowa trafiają do przypiętej kategorii „Z rozszerzenia” — gotowe do nauki.",
-    "howToInstall": "Jak zainstalować?",
     "step1": "Pobierz i rozpakuj plik ZIP.",
-    "step2": "Otwórz chrome://extensions i włącz „Tryb dewelopera” (prawy górny róg).",
-    "step3": "Kliknij „Załaduj rozpakowane” i wskaż rozpakowany folder.",
-    "step4": "Zaloguj się w Languito i połącz rozszerzenie na stronie, która otworzy się automatycznie.",
+    "step2": "W chrome://extensions włącz „Tryb dewelopera” i kliknij „Załaduj rozpakowane”.",
+    "step3": "Połącz rozszerzenie z kontem — strona otworzy się sama.",
     "later": "Może później",
-    "download": "Pobierz rozszerzenie",
+    "download": "Pobierz",
     "addToChrome": "Dodaj do Chrome",
-    "browsers": "Działa w Chrome, Edge, Brave i Operze na komputerze.",
+    "browsers": "Chrome, Edge, Brave i Opera na komputerze.",
     "close": "Zamknij"
   }
 }

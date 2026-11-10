@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "Come funziona",
-    "subtitle": "Impara qualsiasi lingua in tre semplici passi.",
+    "subtitle": "Impara qualsiasi lingua in quattro semplici passi.",
     "step1": {
       "title": "Passo 1: Scegli e Crea",
       "subtitle": "Inizia il tuo percorso linguistico in pochi secondi.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Analisi dei progressi",
       "customStudyPlans": "Piani di studio personalizzati",
       "crossDeviceSync": "Sincronizzazione tra dispositivi"
+    },
+    "step4": {
+      "title": "Passo 4: Impara mentre leggi",
+      "subtitle": "L'estensione del browser trasforma le parole di qualsiasi sito in flashcard.",
+      "select": "Seleziona una parola o un'espressione sconosciuta su qualsiasi pagina e fai clic destro.",
+      "context": "L'IA sceglie la traduzione adatta alla frase e la usa come esempio.",
+      "category": "Le flashcard finiscono nella categoria fissa «Dall'estensione» del tuo account.",
+      "install": "Installa l'estensione dalla finestra che appare sul sito e collegala al tuo account.",
+      "imageAlt": "L'estensione Languito crea una flashcard su un articolo"
     }
   },
   "Footer": {
@@ -324,27 +333,19 @@
   },
   "ExtensionPromo": {
     "badge": "Novità · estensione Chrome",
-    "title": "Impara parole da qualsiasi sito",
-    "description": "Stai leggendo un articolo e trovi una parola sconosciuta? Selezionala e fai clic destro: l'IA crea una flashcard con una traduzione adatta al contesto e la salva nel tuo account Languito.",
+    "title": "Flashcard da qualsiasi sito",
+    "description": "Seleziona una parola su qualsiasi pagina e fai clic destro. L'IA crea una flashcard con una traduzione adatta alla frase e la salva nel tuo account.",
     "previewSentenceStart": "The committee decided to",
     "previewTerm": "postpone",
     "previewSentenceEnd": "the meeting.",
     "previewTranslation": "rinviare, posticipare",
-    "feature1Title": "Clic destro → flashcard",
-    "feature1Text": "Seleziona una parola o un'espressione e scegli «Crea flashcard in Languito» (o Alt+Shift+F).",
-    "feature2Title": "Traduzione dal contesto",
-    "feature2Text": "L'IA legge tutta la frase, sceglie il significato giusto e la usa come esempio.",
-    "feature3Title": "Una categoria dedicata",
-    "feature3Text": "Le parole finiscono nella categoria fissa «Dall'estensione», pronte da studiare.",
-    "howToInstall": "Come installarla?",
     "step1": "Scarica ed estrai il file ZIP.",
-    "step2": "Apri chrome://extensions e attiva la «Modalità sviluppatore» (in alto a destra).",
-    "step3": "Fai clic su «Carica estensione non pacchettizzata» e scegli la cartella estratta.",
-    "step4": "Accedi a Languito e collega l'estensione nella pagina che si aprirà automaticamente.",
+    "step2": "In chrome://extensions attiva la «Modalità sviluppatore» e fai clic su «Carica estensione non pacchettizzata».",
+    "step3": "Collega l'estensione al tuo account: la pagina si apre da sola.",
     "later": "Forse più tardi",
-    "download": "Scarica l'estensione",
+    "download": "Scarica",
     "addToChrome": "Aggiungi a Chrome",
-    "browsers": "Funziona su Chrome, Edge, Brave e Opera da computer.",
+    "browsers": "Chrome, Edge, Brave e Opera da computer.",
     "close": "Chiudi"
   }
 }

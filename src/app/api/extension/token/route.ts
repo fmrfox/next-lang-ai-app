@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
-import { authenticateExtensionRequest, extensionError } from "@/lib/extension-auth";
+import {
+  authenticateExtensionRequest,
+  extensionError,
+  extensionPreflight,
+  withCors,
+} from "@/lib/extension-auth";
 import { getRevokeExtensionTokenUseCase } from "@/lib/container";
 
 /** Called by the extension on "disconnect" — revokes the token used for the request. */
-export async function DELETE(req: Request) {
+async function handle(req: Request) {
   try {
     const session = await authenticateExtensionRequest(req);
     if (!session) return extensionError("unauthorized", "Invalid or revoked extension token");
@@ -15,3 +20,9 @@ export async function DELETE(req: Request) {
     return extensionError("server_error", "Unexpected error");
   }
 }
+
+export async function DELETE(req: Request) {
+  return withCors(req, await handle(req));
+}
+
+export const OPTIONS = extensionPreflight;

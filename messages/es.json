@@ -82,7 +82,7 @@
   },
   "HowItWorks": {
     "title": "Cómo funciona",
-    "subtitle": "Aprende cualquier idioma en tres sencillos pasos.",
+    "subtitle": "Aprende cualquier idioma en cuatro sencillos pasos.",
     "step1": {
       "title": "Paso 1: Elige y Crea",
       "subtitle": "Comienza tu viaje lingüístico en segundos.",
@@ -120,6 +120,15 @@
       "progressAnalytics": "Análisis de progreso",
       "customStudyPlans": "Planes de estudio personalizados",
       "crossDeviceSync": "Sincronización multidispositivo"
+    },
+    "step4": {
+      "title": "Paso 4: Aprende mientras lees",
+      "subtitle": "La extensión del navegador convierte palabras de cualquier web en tarjetas.",
+      "select": "Selecciona una palabra o expresión desconocida en cualquier página y haz clic derecho.",
+      "context": "La IA elige la traducción que encaja en la frase y la usa como ejemplo.",
+      "category": "Las tarjetas van a la categoría fija «Desde la extensión» de tu cuenta.",
+      "install": "Instala la extensión desde la ventana que aparece en la web y conéctala a tu cuenta.",
+      "imageAlt": "La extensión de Languito creando una tarjeta en un artículo"
     }
   },
   "Footer": {
@@ -324,27 +333,19 @@
   },
   "ExtensionPromo": {
     "badge": "Novedad · extensión de Chrome",
-    "title": "Aprende palabras de cualquier web",
-    "description": "¿Lees un artículo y encuentras una palabra desconocida? Selecciónala y haz clic derecho: la IA crea una tarjeta con una traducción adaptada al contexto y la guarda en tu cuenta de Languito.",
+    "title": "Tarjetas desde cualquier web",
+    "description": "Selecciona una palabra en cualquier página y haz clic derecho. La IA crea una tarjeta con una traducción adaptada a la frase y la guarda en tu cuenta.",
     "previewSentenceStart": "The committee decided to",
     "previewTerm": "postpone",
     "previewSentenceEnd": "the meeting.",
     "previewTranslation": "posponer, aplazar",
-    "feature1Title": "Clic derecho → tarjeta",
-    "feature1Text": "Selecciona una palabra o expresión y elige «Crear tarjeta en Languito» (o Alt+Shift+F).",
-    "feature2Title": "Traducción según el contexto",
-    "feature2Text": "La IA lee toda la frase, elige el significado correcto y la usa como ejemplo.",
-    "feature3Title": "Categoría propia",
-    "feature3Text": "Las palabras van a la categoría fija «Desde la extensión», listas para aprender.",
-    "howToInstall": "¿Cómo instalarla?",
     "step1": "Descarga y descomprime el archivo ZIP.",
-    "step2": "Abre chrome://extensions y activa el «Modo de desarrollador» (arriba a la derecha).",
-    "step3": "Haz clic en «Cargar descomprimida» y elige la carpeta descomprimida.",
-    "step4": "Inicia sesión en Languito y conecta la extensión en la página que se abrirá automáticamente.",
+    "step2": "En chrome://extensions activa el «Modo de desarrollador» y pulsa «Cargar descomprimida».",
+    "step3": "Conecta la extensión a tu cuenta: la página se abre sola.",
     "later": "Quizás más tarde",
-    "download": "Descargar extensión",
+    "download": "Descargar",
     "addToChrome": "Añadir a Chrome",
-    "browsers": "Funciona en Chrome, Edge, Brave y Opera en ordenador.",
+    "browsers": "Chrome, Edge, Brave y Opera en ordenador.",
     "close": "Cerrar"
   }
 }
