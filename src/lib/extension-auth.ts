@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuthenticateExtensionTokenUseCase } from "@/lib/container";
 import type { AuthenticatedExtension } from "@/core/useCases/extension";
+import { isDemoUserId } from "@/lib/demo-helpers";
 
 export type ExtensionErrorCode =
   | "unauthorized"
@@ -57,5 +58,8 @@ export async function authenticateExtensionRequest(
   const header = req.headers.get("authorization") ?? "";
   const match = /^Bearer\s+(\S+)$/i.exec(header);
   if (!match) return null;
-  return getAuthenticateExtensionTokenUseCase().execute(match[1]);
+  const session = await getAuthenticateExtensionTokenUseCase().execute(match[1]);
+  // The shared demo account must never receive data from the extension.
+  if (session && isDemoUserId(session.userId)) return null;
+  return session;
 }
