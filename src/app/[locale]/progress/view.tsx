@@ -13,6 +13,7 @@ import { updateDailyGoalAction } from "@/app/actions/progress-actions";
 import { useToast } from "@/components/ui/use-toast";
 import { ErrorMessage } from "@/shared/ui/error-message";
 import { useTranslations } from 'next-intl';
+import { useCategoryLabel } from '@/hooks/useCategoryLabel';
 import { ProgressTopBar } from "@/components/ui/progress-top-bar";
 import { useDemoMode, useDemoProgressUpdates, setDemoDailyGoal } from "@/hooks/useDemoMode";
 
@@ -29,6 +30,7 @@ export default function ProgressDashboard({
   const router = useRouter();
   const { toast } = useToast();
   const t = useTranslations('Progress');
+  const categoryLabel = useCategoryLabel();
   const [stats, setStats] = useState<UserProgressStats>(initialStats);
   const [reviewedToday, setReviewedToday] = useState(initialReviewedToday);
   const [dailyGoal, setDailyGoal] = useState(initialStats.dailyGoal || 10);
@@ -323,7 +325,7 @@ export default function ProgressDashboard({
                   <CardHeader className="pb-2">
                     <div className="flex justify-between items-center">
                       <CardTitle className="text-lg text-white">
-                        {category.name}
+                        {categoryLabel(category.name)}
                       </CardTitle>
                       <Link
                         href={`flashcards?category=${encodeURIComponent(

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Volume2, Plus, Sparkles } from "lucide-react";
+import { Volume2, Plus, Sparkles, Trash2 } from "lucide-react";
 import { Flashcard } from "@/core/entities/Flashcard";
 import { speak } from "@/utils/speak";
 import { SupportedTTSLanguage } from "@/types/locale";
@@ -21,11 +21,14 @@ const langToTTSMap: Record<string, SupportedTTSLanguage> = {
 interface FlashcardGridProps {
   cards: Flashcard[];
   onGenerateFlashcards?: (category: string) => void;
+  /** When set, each card gets a delete button (used for the extension category). */
+  onDeleteCard?: (card: Flashcard) => void;
 }
 
 export function FlashcardGrid({
   cards,
   onGenerateFlashcards,
+  onDeleteCard,
 }: FlashcardGridProps) {
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const [isGenerateDialogOpen, setIsGenerateDialogOpen] = useState(false);
@@ -69,6 +72,7 @@ export function FlashcardGrid({
 
       <ScrollArea className="h-[calc(100vh-80px)] pr-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 pb-16">
+          {onGenerateFlashcards && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,13 +133,14 @@ export function FlashcardGrid({
               </div>
             </div>
           </motion.div>
+          )}
 
           {cards.map((card, index) => {
             const targetTTS = langToTTSMap[card.targetLanguage] || "en-US";
 
             return (
               <motion.div
-                key={index}
+                key={card.id ?? index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 + 0.1 }}
@@ -143,6 +148,20 @@ export function FlashcardGrid({
                 onClick={() => toggleCard(index)}
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
+                {onDeleteCard && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-2 top-2 z-20 h-8 w-8 rounded-full bg-black/60 border border-white/10 text-gray-300 hover:text-red-400"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDeleteCard(card);
+                    }}
+                    aria-label="Delete flashcard"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                )}
 
                 <motion.div
                   className="w-full h-full relative [transform-style:preserve-3d] transition-transform duration-150"

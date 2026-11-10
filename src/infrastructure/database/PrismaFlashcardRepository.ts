@@ -56,6 +56,46 @@ export class PrismaFlashcardRepository implements FlashcardRepository {
     }) as Flashcard;
   }
   
+  async findUserFlashcardByTerm(
+    userId: string,
+    term: string,
+    sourceLanguage: string,
+    targetLanguage: string
+  ): Promise<Flashcard | null> {
+    const flashcard = await this.prisma.flashcard.findFirst({
+      where: {
+        userId,
+        sourceLanguage,
+        targetLanguage,
+        translate_text: { equals: term, mode: "insensitive" },
+      },
+    });
+
+    if (!flashcard) return null;
+
+    return {
+      ...flashcard,
+      translate_category: flashcard.translate_category || flashcard.category,
+    } as Flashcard;
+  }
+
+  async deleteUserFlashcardInCategory(
+    userId: string,
+    flashcardId: number,
+    category: string
+  ): Promise<boolean> {
+    const { count } = await this.prisma.flashcard.deleteMany({
+      where: { id: flashcardId, userId, category },
+    });
+    return count > 0;
+  }
+
+  async countUserFlashcardsCreatedSince(userId: string, since: Date): Promise<number> {
+    return this.prisma.flashcard.count({
+      where: { userId, createdAt: { gte: since } },
+    });
+  }
+
   async deleteFlashcardsByCategory(userId: string, category: string): Promise<number> {
     try {
       const result = await this.prisma.flashcard.deleteMany({

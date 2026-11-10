@@ -1,4 +1,5 @@
 import { FlashcardRepository } from "@/core/interfaces/repositories/FlashcardRepository";
+import { isExtensionCategory } from "@/lib/extension-category";
 
 export interface DeleteCategoryParams {
   userId: string;
@@ -22,6 +23,13 @@ export class DeleteCategoryUseCase {
         return {
           success: false,
           error: "Authentication required: User is not signed in",
+        };
+      }
+
+      if (isExtensionCategory(category)) {
+        return {
+          success: false,
+          error: "This category is permanent and cannot be deleted",
         };
       }
 

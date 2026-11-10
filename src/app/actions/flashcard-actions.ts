@@ -7,9 +7,11 @@ import {
   getUserLanguagesUseCase,
   getImportGuestFlashcardsUseCase,
   getHandleGuestFlashcardGenerationUseCase,
+  getFlashcardRepository,
 } from "@/lib/container";
 import { GenerateFlashcardsParams } from "@/core/useCases/flashcards/GenerateFlashcards";
 import { isDemoMode } from "@/lib/demo-helpers";
+import { EXTENSION_CATEGORY, isExtensionCategory } from "@/lib/extension-category";
 import { 
   ImportableFlashcard, 
   FlashcardGenerationResponse, 
@@ -210,6 +212,13 @@ export async function generateMoreFlashcardsAction(params: {
       };
     }
 
+    if (isExtensionCategory(params.category)) {
+      return {
+        success: false,
+        error: "Flashcards in this category are added from the browser extension",
+      };
+    }
+
     const { userId, user } = await auth();
 
     if (!userId) {
@@ -365,5 +374,37 @@ export async function generateMoreGuestFlashcardsAction(params: {
           ? error.message
           : "An unexpected error occurred during guest flashcard generation",
     };
+  }
+}
+
+/** Deletes a single flashcard. Only cards from the extension category can be deleted one by one. */
+export async function deleteExtensionFlashcardAction(flashcardId: number) {
+  try {
+    // Server actions are public endpoints — never trust the argument's type.
+    if (!Number.isSafeInteger(flashcardId) || flashcardId <= 0) {
+      return { success: false, error: "Invalid flashcard id" };
+    }
+
+    if (await isDemoMode()) {
+      return { success: false, error: "Demo mode: Please sign in to delete flashcards" };
+    }
+
+    const { userId } = await auth();
+    if (!userId) {
+      return { success: false, error: "Authentication required: User is not signed in" };
+    }
+
+    const deleted = await getFlashcardRepository().deleteUserFlashcardInCategory(
+      userId,
+      flashcardId,
+      EXTENSION_CATEGORY
+    );
+
+    return deleted
+      ? { success: true }
+      : { success: false, error: "Flashcard not found" };
+  } catch (error) {
+    console.error("Delete flashcard error:", error);
+    return { success: false, error: "Failed to delete flashcard" };
   }
 }

@@ -22,6 +22,7 @@ model User {
   flashcards        Flashcard[]
   progress          Progress[]
   favorites         Favorite[]
+  extensionTokens   ExtensionToken[]
   learningStreak    Int         @default(0)
   lastActivityDate  DateTime?
   preferredLanguage String      @default("en")
@@ -72,4 +73,17 @@ model Favorite {
   createdAt   DateTime  @default(now())
 
   @@unique([userId, flashcardId])
+}
+// API tokens issued to the Languito browser extension.
+// Only the SHA-256 hash of the token is stored.
+model ExtensionToken {
+  id         String    @id @default(cuid())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  tokenHash  String    @unique
+  createdAt  DateTime  @default(now())
+  lastUsedAt DateTime?
+  revokedAt  DateTime?
+
+  @@index([userId])
 }

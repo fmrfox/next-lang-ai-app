@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Flashcard } from "@/core/entities/Flashcard";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks";
-import { Grid, Maximize2, Sparkles } from "lucide-react";
+import { Grid, Maximize2, Sparkles, Pin } from "lucide-react";
 import { useParams, useSearchParams } from "next/navigation";
 import { useRouter } from "@/i18n/navigation";
 import { FlashcardsSidebar } from "@/components/flashcards-sidebar";
@@ -15,7 +15,21 @@ import { TopBar } from "@/components/ui/top-bar";
 import { ErrorMessage } from "@/shared/ui/error-message";
 import { UserProgressStats } from "@/types/progress";
 import { toast } from "@/components/ui/use-toast";
-import { generateMoreFlashcardsAction } from "@/app/actions/flashcard-actions";
+import {
+  generateMoreFlashcardsAction,
+  deleteExtensionFlashcardAction,
+} from "@/app/actions/flashcard-actions";
+import { isExtensionCategory } from "@/lib/extension-category";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/shared/ui/alert-dialog";
 import { addFavoriteAction, removeFavoriteAction } from "@/app/actions/favorite-actions";
 import { LoginPromptPopup } from "@/components/login-prompt-popup";
 import { WelcomeNewUserModal } from "@/components/welcome-new-user-modal";
@@ -82,6 +96,11 @@ export default function FlashcardsView({
   const { isDemoMode, exitDemoMode } = useDemoMode();
   const { isSignedIn } = useUser();
   const t = useTranslations('Flashcards');
+  const tExt = useTranslations('Extension');
+  // Cards deleted in this session — hidden immediately, before router.refresh() brings fresh data.
+  const [deletedIds, setDeletedIds] = useState<Set<number>>(() => new Set());
+  const [cardToDelete, setCardToDelete] = useState<Flashcard | null>(null);
+  const [isDeletingCard, setIsDeletingCard] = useState(false);
 
   // Calculate masteredCategories for demo mode from localStorage
   const calculatedMasteredCategories = isDemoMode && progressStats?.data 
@@ -273,7 +292,27 @@ export default function FlashcardsView({
     setShowLoginPrompt(true);
   };
 
-  const flashcardsSource = isFavoritesView ? visibleFlashcards : initialFlashcards;
+  const flashcardsSource = (isFavoritesView ? visibleFlashcards : initialFlashcards).filter(
+    (card) => !deletedIds.has(card.id)
+  );
+  const isExtensionSelected = isExtensionCategory(selectedCategory);
+  const canDeleteCards = isExtensionSelected && !isDemoMode;
+
+  const confirmDeleteCard = async () => {
+    if (!cardToDelete) return;
+    setIsDeletingCard(true);
+    const result = await deleteExtensionFlashcardAction(cardToDelete.id);
+    setIsDeletingCard(false);
+    if (result.success) {
+      setDeletedIds((prev) => new Set(prev).add(cardToDelete.id));
+      setCurrentCardIndex(0);
+      toast({ title: tExt("cardDeleted"), variant: "success", duration: 1500 });
+      router.refresh();
+    } else {
+      toast({ title: tExt("cardDeleteFailed"), description: result.error, variant: "destructive" });
+    }
+    setCardToDelete(null);
+  };
   const categoryCards = selectedCategory
     ? flashcardsSource.filter((card) => card.category === selectedCategory)
     : flashcardsSource;
@@ -375,7 +414,7 @@ export default function FlashcardsView({
         <div
           className={`
           fixed inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-in-out
-          md:relative md:transform-none
+          md:relative md:inset-auto md:h-full md:transform-none
           ${
             isSidebarCollapsed
               ? "-translate-x-full md:translate-x-0"
@@ -453,6 +492,21 @@ export default function FlashcardsView({
               </div>
 
               <div className="flex-1 overflow-hidden">
+                {isExtensionSelected && categoryCards.length === 0 ? (
+                  <div className="flex items-center justify-center h-full p-6">
+                    <div className="text-center max-w-md">
+                      <Pin className="h-10 w-10 mx-auto mb-4 text-amber-400 rotate-45" />
+                      <h2 className="text-xl font-semibold mb-2">{tExt("emptyCategoryTitle")}</h2>
+                      <p className="text-gray-400 mb-6">{tExt("emptyCategoryHint")}</p>
+                      <Button
+                        onClick={() => router.push("/extension/connect")}
+                        className="bg-amber-500/90 hover:bg-amber-400 text-black font-medium"
+                      >
+                        {tExt("connectExtension")}
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={viewMode}
@@ -471,6 +525,7 @@ export default function FlashcardsView({
                           isFavorited={favoriteIds.has(currentCard.id)}
                           onToggleFavorite={handleToggleFavorite}
                           answerCycle={answerCycle}
+                          onDelete={canDeleteCards ? setCardToDelete : undefined}
                         />
                       ) : (
                         <div className="flex items-center justify-center h-[calc(100vh-12rem)]">
@@ -482,11 +537,13 @@ export default function FlashcardsView({
                     ) : (
                       <FlashcardGrid
                         cards={categoryCards}
-                        onGenerateFlashcards={handleGenerateFlashcards}
+                        onGenerateFlashcards={isExtensionSelected ? undefined : handleGenerateFlashcards}
+                        onDeleteCard={canDeleteCards ? setCardToDelete : undefined}
                       />
                     )}
                   </motion.div>
                 </AnimatePresence>
+                )}
               </div>
             </>
           ) : (
@@ -517,6 +574,23 @@ export default function FlashcardsView({
           )}
         </main>
       </div>
+
+      <AlertDialog open={cardToDelete !== null} onOpenChange={(open) => !open && setCardToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {tExt("deleteCardTitle", { term: cardToDelete?.translate_text ?? "" })}
+            </AlertDialogTitle>
+            <AlertDialogDescription>{tExt("deleteCardDescription")}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeletingCard}>{tExt("cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDeleteCard} disabled={isDeletingCard}>
+              {tExt("delete")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       {/* Login Prompt Popup */}
       <LoginPromptPopup
